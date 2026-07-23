@@ -1,3 +1,11 @@
+// ===== Force fresh page loads to start at the top =====
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+if (!window.location.hash) {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+}
+
 // ===== Navbar scroll state + scroll progress bar =====
 const navbar = document.getElementById('navbar');
 const progressBar = document.getElementById('progressBar');
