@@ -642,6 +642,7 @@ img { max-width: 100%; display: block; }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: dense;
   gap: 24px;
 }
 .project-card {
