@@ -1,7 +1,11 @@
-// ===== Navbar scroll state =====
+// ===== Navbar scroll state + scroll progress bar =====
 const navbar = document.getElementById('navbar');
+const progressBar = document.getElementById('progressBar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  progressBar.style.width = pct + '%';
 });
 
 // ===== Mobile menu =====
@@ -94,3 +98,20 @@ sections.forEach(section => sectionObserver.observe(section));
 
 // ===== Footer year =====
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== Tilt effect on cards (desktop only) =====
+if (window.matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.project-card, .skill-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y / rect.height) - 0.5) * -6;
+      const rotateY = ((x / rect.width) - 0.5) * 6;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
