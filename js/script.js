@@ -42,10 +42,11 @@ if (window.matchMedia('(hover: hover)').matches) {
 // ===== Typed text effect =====
 const typedText = document.getElementById('typedText');
 const phrases = [
-  'Data Science & AI/ML Engineer',
-  'RAG Architecture Builder',
-  'Computer Vision Engineer',
-  'FastAPI Backend Developer'
+  'Generative AI Developer',
+  'LLM Engineer',
+  'RAG & Agentic Workflow Builder',
+  'FastAPI Backend Developer',
+  'Computer Vision Engineer'
 ];
 let phraseIndex = 0, charIndex = 0, deleting = false;
 
